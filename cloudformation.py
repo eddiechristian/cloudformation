@@ -34,17 +34,21 @@ class CloudFormation():
         return False
 
     def create_stack_template(self):
+        "sg-006bb1b84c5a7ea6c"
         ami_id="ami-0de53d8956e8dcf80"
         t = Template()
         instance = ec2.Instance("myinstance1")
         instance.ImageId = ami_id
+        instance.SecurityGroupIds = [ "sg-006bb1b84c5a7ea6c" ]
         instance.InstanceType = "t1.micro"
         instance.Tags = self.instance_tags(1)
 
         instance2 = ec2.Instance("myinstance2")
         instance2.ImageId = ami_id
+        instance2.SecurityGroupIds = [ "sg-006bb1b84c5a7ea6c" ]
         instance2.InstanceType = "t1.micro"
         instance2.Tags = self.instance_tags(2)
+
 
         t.add_resource(instance)
         t.add_resource(instance2)
