@@ -40,12 +40,14 @@ class CloudFormation():
         instance = ec2.Instance("myinstance1")
         instance.ImageId = ami_id
         instance.SecurityGroupIds = [ "sg-006bb1b84c5a7ea6c" ]
+        instance.KeyName = "eddie.christian"
         instance.InstanceType = "t1.micro"
         instance.Tags = self.instance_tags(1)
 
         instance2 = ec2.Instance("myinstance2")
         instance2.ImageId = ami_id
         instance2.SecurityGroupIds = [ "sg-006bb1b84c5a7ea6c" ]
+        instance2.KeyName = "eddie.christian"
         instance2.InstanceType = "t1.micro"
         instance2.Tags = self.instance_tags(2)
 
